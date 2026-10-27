@@ -6,6 +6,12 @@ It is useful when AI-assisted code makes implementation fast but leaves a review
 
 No API key, model, or cloud service is used.
 
+## Demo
+
+![Terminal demo of a passing Proofline evidence pack](assets/proofline-demo.svg)
+
+This is a faithful, reproducible rendering of the safe fixture run recorded in [`reports/smoke/proofline-report.md`](reports/smoke/proofline-report.md). It shows the generated change summary and a passing explicit test command; it is not AI-generated product imagery.
+
 ## Quick start
 
 Requirements: Python 3.10+ and Git.
