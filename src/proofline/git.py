@@ -22,10 +22,21 @@ def repository_name(cwd: Path) -> str:
 
 
 def changes(cwd: Path, staged: bool) -> list[dict]:
-    args = ["diff", "--numstat", "--summary"]
+    args = ["diff", "--numstat"]
     if staged:
         args.append("--cached")
     lines = _git(cwd, *args).splitlines()
+    status_args = ["diff", "--name-status"]
+    if staged:
+        status_args.append("--cached")
+    statuses: dict[str, str] = {}
+    for line in _git(cwd, *status_args).splitlines():
+        fields = line.split("\t")
+        if len(fields) < 2:
+            continue
+        code = fields[0]
+        path = fields[-1]
+        statuses[path] = {"A": "added", "D": "deleted", "R": "renamed", "C": "copied"}.get(code[:1], "modified")
     found: list[dict] = []
     for line in lines:
         parts = line.split("\t", 2)
@@ -33,6 +44,6 @@ def changes(cwd: Path, staged: bool) -> list[dict]:
             continue
         additions, deletions, path = parts
         # Binary numstat uses '-'; retain it as zero rather than making a false count.
-        found.append({"path": path, "status": "modified", "additions": int(additions) if additions.isdigit() else 0,
+        found.append({"path": path, "status": statuses.get(path, "modified"), "additions": int(additions) if additions.isdigit() else 0,
                       "deletions": int(deletions) if deletions.isdigit() else 0})
     return found

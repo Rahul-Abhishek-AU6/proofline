@@ -1,0 +1,36 @@
+{
+  "changes": [
+    {
+      "additions": 13,
+      "cues": [],
+      "deletions": 2,
+      "path": "src/proofline/git.py",
+      "status": "modified"
+    }
+  ],
+  "generated_at": "2026-10-27T19:12:59+00:00",
+  "limitations": [
+    "Proofline provides review evidence, not proof of correctness.",
+    "Risk cues are deterministic prompts for human review, not security findings.",
+    "Redaction is best-effort; inspect reports before sharing them."
+  ],
+  "mode": "working-tree",
+  "repository": "/Users/rahul/Documents/Codes/Exttra/Claude-works/AI-Agents/github/projects/20261028-004032-developer-and-engineering-pain-points",
+  "review_checklist": [
+    "Review each changed path and its intended behavior.",
+    "Confirm the selected tests cover the changed behavior."
+  ],
+  "schema_version": 1,
+  "summary": {
+    "additions": 13,
+    "changed_files": 1,
+    "deletions": 2
+  },
+  "test": {
+    "command": "PYTHONPATH=src python3 -m unittest discover -s tests -q",
+    "exit_code": 0,
+    "output_redacted": "hint: Using 'master' as the name for the initial branch. This default branch name\nhint: is subject to change. To configure the initial branch name to use in all\nhint: of your new repositories, which will suppress this warning, call:\nhint: \nhint: \tgit config --global init.defaultBranch <name>\nhint: \nhint: Names commonly chosen instead of 'master' are 'main', 'trunk' and\nhint: 'development'. The just-created branch can be renamed via this command:\nhint: \nhint: \tgit branch -m <name>\n----------------------------------------------------------------------\nRan 3 tests in 0.105s\n\nOK\n",
+    "status": "passed",
+    "timed_out": false
+  }
+}
